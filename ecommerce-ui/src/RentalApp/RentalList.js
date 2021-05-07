@@ -9,15 +9,18 @@ class RentalList extends Component {
         super();
         this.state = {
             airbnbs: airbnbs,
-            shoppingItems: airbnbs
+            shoppingItems: []
         };
     }
-//add and delete function
-//onadd = this,
-    //on to hadle events
-    handleAdd = rentalTitle => {
+    //add and delete function
+    handleAdd = rental => {
+        this.setState({
+            shoppingItems: [
+                ...this.state.shoppingItems, rental
+            ]
+        })
+    };
 
-    }
     handleDelete = itemTitle => {
         const shoppingItems = this.state.shoppingItems.filter(item => item.title !== itemTitle);
         this.setState({ shoppingItems });
@@ -29,8 +32,8 @@ class RentalList extends Component {
                 <div className="row col-9">
                     {this.state.airbnbs.map((rental, idx) => (
                         <div className="col-md-4" key={idx}>
-                            <Rental rental={rental} 
-                            onAdd={this.handleAdd}
+                            <Rental rental={rental}
+                                onAdd={this.handleAdd}
                             />
                         </div>
                     ))}
@@ -43,8 +46,8 @@ class RentalList extends Component {
                     </div>
                     {this.state.shoppingItems.map((item, idx) => (
                         <div key={idx}>
-                            <ShoppingItem item={item} 
-                            onDelete={this.handleDelete}
+                            <ShoppingItem item={item}
+                                onDelete={this.handleDelete}
                             />
                         </div>
                     ))}

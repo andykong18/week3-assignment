@@ -25,6 +25,14 @@ class RentalList extends Component {
         const shoppingItems = this.state.shoppingItems.filter(item => item.title !== itemTitle);
         this.setState({ shoppingItems });
     };
+    // calculate total price in shopping cart
+    total = () => {
+        let totalPrice = 0;
+        this.state.shoppingItems.forEach((item) => {
+            totalPrice += item.payment.cost;
+        });
+        return totalPrice;
+    };
 
     render() {
         return (
@@ -51,6 +59,10 @@ class RentalList extends Component {
                             />
                         </div>
                     ))}
+                    <div className="row border-top">
+                        <div className="col-8">Total:</div>
+                        <div className="col-4">${this.total()}</div>
+                    </div>
                 </div>
             </div>
         );

@@ -25,9 +25,7 @@ class Rental extends Component {
             })
         }).isRequired
     }
-
     //name the function
-
     render() {
         const { image, title, houseType, location, payment } = this.props.rental;
         const { rental, onAdd } = this.props;
@@ -42,7 +40,7 @@ class Rental extends Component {
                     <p>$ {payment.cost}</p>
                     <button
                         className="btn btn-success btn-sm"
-                        onClick={() => onAdd(title)}>
+                        onClick={() => onAdd(rental)}>
                         Add To Cart
                     </button>
                 </div>

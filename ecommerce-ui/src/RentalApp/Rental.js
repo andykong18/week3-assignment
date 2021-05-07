@@ -2,24 +2,29 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Rental extends Component {
-    // static propTypes = {
-    //     article: PropTypes.shape({
-    //         author: PropTypes.shape({
-    //             name: PropTypes.string.isRequired,
-    //             image: PropTypes.string.isRequired,
-    //             isMediumMember: PropTypes.bool.isRequired
-    //         }).isRequired,
-    //         description: PropTypes.string.isRequired,
-    //         hasAudioAvailable: PropTypes.bool.isRequired,
-    //         image: PropTypes.string.isRequired,
-    //         link: PropTypes.string.isRequired,
-    //         // Whether an article is behind a paywall
-    //         memberPreview: PropTypes.bool.isRequired,
-    //         minutesToRead: PropTypes.number.isRequired,
-    //         postedDate: PropTypes.string.isRequired,
-    //         title: PropTypes.string.isRequired
-    //     }).isRequired
-    // }
+    static propTypes = {
+        rental: PropTypes.shape({
+            title: PropTypes.string.isRequired,
+            houseType: PropTypes.string.isRequired,
+            image: PropTypes.string.isRequired,
+            location: PropTypes.shape({
+                city: PropTypes.string.isRequired,
+                country: PropTypes.string.isRequired,
+            }).isRequired,
+            payment: PropTypes.shape({
+                cost: PropTypes.number.isRequired,
+                description: PropTypes.string.isRequired
+            }).isRequired,
+            host: PropTypes.shape({
+                name: PropTypes.number.isRequired,
+                isSuperhost: PropTypes.bool.isRequired
+            }).isRequired,
+            rating: PropTypes.shape({
+                stars: PropTypes.number.isRequired,
+                reviews: PropTypes.number.isRequired
+            })
+        }).isRequired
+    }
 
     //name the function
 
@@ -41,7 +46,7 @@ class Rental extends Component {
                         Add To Cart
                     </button>
                 </div>
-            </div>
+            </div >
         )
     }
 }
